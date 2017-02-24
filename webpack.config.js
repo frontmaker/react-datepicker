@@ -24,6 +24,12 @@ const loaders = [
         include: path.join(__dirname, 'src'),
     },
 
+    { // other svg images will processed as normal
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: 'file',
+        include: path.join(__dirname, 'src/img'),
+    },
+
     { // used for dependencies that don't support sass
         test: /\.css$/,
         loaders: ['style', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'postcss'],
