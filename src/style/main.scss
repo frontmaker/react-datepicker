@@ -15,6 +15,27 @@ $header-height: 40px;
   vertical-align: middle;
 }
 
+.calendar-container {
+  width: 310px;
+  font-family: 'Roboto', sans-serif;
+  flex-direction: column;
+  display: flex;
+}
+
+.calendar-header {
+  background-color: rgb(0, 151, 167);
+  padding: 10px;
+  display: flex;
+  flex-flow: wrap column;
+  align-items: center;
+  color: #FFF;
+
+  &__date {
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+
 .calendar {
   float: left;
   display: block;
@@ -77,7 +98,7 @@ $header-height: 40px;
 
   .day {
     float: left;
-    width: 100%/7;
+    width: 15%;
     @extend .border-box;
     border-left: solid 1px $border-colour;
     font-size: 0.75em;
