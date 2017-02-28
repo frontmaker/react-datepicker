@@ -2,7 +2,9 @@
 import React from 'react';
 import moment from 'moment';
 
-import WeekDays from './WeekDays';
+import Weeks from './Weeks';
+
+import '../style/main.scss';
 
 type Props = {
     format: String,
@@ -63,8 +65,23 @@ export default class Calendar extends React.Component {
                             <i className="fa fa-angle-right" onClick={this.prevMonth}>&nbsp;</i>
                         </span>
                     </div>
-                    <WeekDays />
+                    {this.renderWeekDays()}
+                    <Weeks date={this.props.date}/>
                 </div>
+            </div>
+        )
+    }
+
+    renderWeekDays() {
+        return(
+            <div className="calendar-weeks">
+                <span className="calendar-weeks__day">Sun</span>
+                <span className="calendar-weeks__day">Mon</span>
+                <span className="calendar-weeks__day">Tue</span>
+                <span className="calendar-weeks__day">Wed</span>
+                <span className="calendar-weeks__day">Thu</span>
+                <span className="calendar-weeks__day">Fri</span>
+                <span className="calendar-weeks__day">Sat</span>
             </div>
         )
     }
