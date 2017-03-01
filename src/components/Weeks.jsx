@@ -9,14 +9,30 @@ const Week = (props) => {
 
 
     for (let i = 0; i < 7; i++) {
+
         let day = {
             name: date.format("dd").substring(0, 1),
             number: date.date(),
             isCurrentMonth: date.month() === month.month(),
+            isSelected: date.isSame(props.date),
             isToday: date.isSame(new Date(), "day"),
             date: date
         };
-        days.push(<span className="calendar-days__day" key={day.date.toString()}>{day.number}</span>);
+
+        days.push(
+            <div
+            className={`calendar-days__day ${day.isToday ? '_today' : ''}`}
+            key={date.toString()}
+            onClick={() => console.log(day.date.toString())}
+            >
+                <span>
+                {
+                    day.isCurrentMonth ? date.date() : ''
+                }
+                </span>
+            </div>
+        );
+
         date = date.clone();
         date.add(1, "d");
 
@@ -36,23 +52,19 @@ const Weeks = (props) => {
         monthIndex = date.month(),
         count = 0;
 
-    for (let i = 0; i < 5; i++) {
 
-        if (monthIndex === date.month()) {
-            weeks.push(<Week key={date.toString()} date={date.clone()} month={props.date} />);
-            date.add(1, "w");
-            monthIndex = date.month();
-        }
+    while (!done) {
+
+        weeks.push(<Week
+            key={date.toString()}
+            select={props.select}
+            date={date.clone()}
+            month={props.date}
+        />);
+        date.add(1, "w");
+        done = count++ > 2 && monthIndex !== date.month();
+        monthIndex = date.month();
     }
-
-
-    // while (!done) {
-    //
-    //     weeks.push(<Week key={date.toString()} date={date.clone()} month={props.date} />);
-    //     date.add(1, "w");
-    //     done = count++ > 2 && monthIndex !== date.month();
-    //     monthIndex = date.month();
-    // }
 
 
     return(
