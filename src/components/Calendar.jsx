@@ -29,6 +29,7 @@ export default class Calendar extends React.Component {
 
         this.prevMonth = this.prevMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
+        this.selectDate = this.selectDate.bind(this);
     }
 
     prevMonth(): void {
@@ -39,7 +40,11 @@ export default class Calendar extends React.Component {
 
     nextMonth(): void {
         const {date} = this.props;
-        date.add(-1, "M");
+        date.add(1, "M");
+        this.setState({date})
+    }
+
+    selectDate(date): void {
         this.setState({date})
     }
 
@@ -50,9 +55,9 @@ export default class Calendar extends React.Component {
                 <div className="calendar-header">
                     <div className="calendar-header__year">{this.props.date.format("YYYY")}</div>
                     <div className="calendar-header__date">
-                        <span>{this.props.date.locale('ru').format("ddd")},</span>
-                        <span>{this.props.date.format("MMM")}</span>
-                        <span>{this.props.date.format("D")}</span>
+                        <span>{this.state.date.locale('ru').format("ddd")},</span>
+                        <span>{this.state.date.format("MMM")}</span>
+                        <span>{this.state.date.format("D")}</span>
                     </div>
                 </div>
                 <div className="calendar-body">
@@ -60,13 +65,16 @@ export default class Calendar extends React.Component {
                         <span className="calendar-body__icon _left">
                             <i className="fa fa-angle-left" onClick={this.prevMonth}>&nbsp;</i>
                         </span>
-                        {this.props.date.format("MMMM")}
+                        {this.state.date.format("MMMM")}
                         <span className="calendar-body__icon _right">
-                            <i className="fa fa-angle-right" onClick={this.prevMonth}>&nbsp;</i>
+                            <i className="fa fa-angle-right" onClick={this.nextMonth}>&nbsp;</i>
                         </span>
                     </div>
                     {this.renderWeekDays()}
-                    <Weeks date={this.props.date}/>
+                    <Weeks
+                        select={this.selectDate}
+                        date={this.state.date}
+                    />
                 </div>
             </div>
         )
@@ -75,13 +83,13 @@ export default class Calendar extends React.Component {
     renderWeekDays() {
         return(
             <div className="calendar-weeks">
-                <span className="calendar-weeks__day">Sun</span>
                 <span className="calendar-weeks__day">Mon</span>
                 <span className="calendar-weeks__day">Tue</span>
                 <span className="calendar-weeks__day">Wed</span>
                 <span className="calendar-weeks__day">Thu</span>
                 <span className="calendar-weeks__day">Fri</span>
                 <span className="calendar-weeks__day">Sat</span>
+                <span className="calendar-weeks__day">Sun</span>
             </div>
         )
     }
