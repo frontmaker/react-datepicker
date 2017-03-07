@@ -14,6 +14,7 @@ type Props = {
 
 type State = {
     date: Date,
+    selectedDate: Date
 }
 
 export default class Calendar extends React.Component {
@@ -24,6 +25,7 @@ export default class Calendar extends React.Component {
 
         this.state = {
             date: moment(Date.now()),
+            selectedDate: moment(Date.now()),
             locale: 'en'
         }
 
@@ -45,7 +47,7 @@ export default class Calendar extends React.Component {
     }
 
     selectDate(date): void {
-        this.setState({date})
+        this.setState({selectedDate: date})
     }
 
     render() {
@@ -53,11 +55,11 @@ export default class Calendar extends React.Component {
         return(
             <div className="calendar-container">
                 <div className="calendar-header">
-                    <div className="calendar-header__year">{this.props.date.format("YYYY")}</div>
+                    <div className="calendar-header__year">{this.state.selectedDate.format("YYYY")}</div>
                     <div className="calendar-header__date">
-                        <span>{this.state.date.locale('ru').format("ddd")},</span>
-                        <span>{this.state.date.format("MMM")}</span>
-                        <span>{this.state.date.format("D")}</span>
+                        <span>{this.state.selectedDate.format("ddd")},</span>
+                        <span>{this.state.selectedDate.format("MMM")}</span>
+                        <span>{this.state.selectedDate.format("D")}</span>
                     </div>
                 </div>
                 <div className="calendar-body">
@@ -73,6 +75,7 @@ export default class Calendar extends React.Component {
                     {this.renderWeekDays()}
                     <Weeks
                         select={this.selectDate}
+                        selectedDate={this.state.selectedDate}
                         date={this.state.date}
                     />
                 </div>
