@@ -85,4 +85,11 @@ $green: rgb(0, 151, 167);
       border-radius: 20px;
     }
   }
+
+  &__empty {
+    width: 31px;
+    padding: 5px 0;
+    justify-content: center;
+    display: flex;
+  }
 }
