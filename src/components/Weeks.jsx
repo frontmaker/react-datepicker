@@ -1,36 +1,38 @@
 import React from 'react';
 
 
+const Day = (props) => {
+    return (
+        <div
+        className={`calendar-days__day ${props.isToday ? '_today' : ''}`}
+        onClick={() => console.log(props.date.toString())}>
+            <span>
+                {
+                    props.isCurrentMonth ? props.date.date() : ''
+            }
+            </span>
+        </div>)
+}
+
+
+
 const Week = (props) => {
 
     let days = [],
         date = props.date,
         month = props.month;
 
-
     for (let i = 0; i < 7; i++) {
 
-        let day = {
-            name: date.format("dd").substring(0, 1),
-            number: date.date(),
-            isCurrentMonth: date.month() === month.month(),
-            isSelected: date.isSame(props.date),
-            isToday: date.isSame(new Date(), "day"),
-            date: date
-        };
-
         days.push(
-            <div
-            className={`calendar-days__day ${day.isToday ? '_today' : ''}`}
-            key={date.toString()}
-            onClick={() => console.log(day.date.toString())}
-            >
-                <span>
-                {
-                    day.isCurrentMonth ? date.date() : ''
-                }
-                </span>
-            </div>
+            <Day
+                isToday={date.isSame(props.date)}
+                isSelected={date.isSame(props.date)}
+                isCurrentMonth={date.month() === month.month()}
+                select={props.select}
+                key={date.toString()}
+                date={date}
+            />
         );
 
         date = date.clone();
