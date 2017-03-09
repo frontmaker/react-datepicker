@@ -38,6 +38,7 @@ export default class Calendar extends React.Component {
         const {date} = this.props;
         date.add(-1, "M");
         this.setState({date})
+
     }
 
     nextMonth(): void {
