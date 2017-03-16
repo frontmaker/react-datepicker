@@ -1,11 +1,20 @@
 import React from 'react';
 
 const Day = ({selected, date, select, isCurrentMonth}) => {
+
+    let dayClass = 'calendar-days__day';
+
+    if (selected.isSame(date, "day")) dayClass += ' _selected'
+
+    if (date.isSame(new Date, "day")) dayClass += ' _today'
+
+    console.log(dayClass);
+
     return (
         <div>
             {isCurrentMonth ?
                 <div
-                    className={`calendar-days__day ${selected.isSame(date, "day") ? '_today' : ''}`}
+                    className={dayClass}
                     onClick={() => select(date)}>
                     <span>{date.date()}</span>
                 </div> :
