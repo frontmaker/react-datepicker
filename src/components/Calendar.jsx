@@ -34,11 +34,25 @@ export default class Calendar extends React.Component {
         this.selectDate = this.selectDate.bind(this);
     }
 
+    componentWillMount() {
+
+        const {locale} = this.props;
+
+        if (locale) {
+
+            this.setState({
+                date: this.state.date.locale(locale),
+                selectedDate: this.state.selectedDate.locale(locale),
+                locale: locale
+            })
+
+        }
+    }
+
     prevMonth(): void {
         const {date} = this.props;
         date.add(-1, "M");
         this.setState({date})
-
     }
 
     nextMonth(): void {
@@ -53,10 +67,12 @@ export default class Calendar extends React.Component {
 
     render() {
 
-        return(
+        return (
             <div className="calendar-container">
                 <div className="calendar-header">
-                    <div className="calendar-header__year">{this.state.selectedDate.format("YYYY")}</div>
+                    <div className="calendar-header__year">
+                        {this.state.selectedDate.format("YYYY")}
+                    </div>
                     <div className="calendar-header__date">
                         <span>{this.state.selectedDate.format("ddd")},</span>
                         <span>{this.state.selectedDate.format("MMM")}</span>
@@ -85,7 +101,7 @@ export default class Calendar extends React.Component {
     }
 
     renderWeekDays() {
-        return(
+        return (
             <div className="calendar-weeks">
                 <span className="calendar-weeks__day">Mon</span>
                 <span className="calendar-weeks__day">Tue</span>
