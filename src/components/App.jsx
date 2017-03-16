@@ -13,7 +13,7 @@ export default class App extends Component {
             <div>
                 <Calendar
                     date={currentTime}
-                    locale="en"
+                    locale="de"
                 />
             </div>
         );

@@ -8,8 +8,6 @@ const Day = ({selected, date, select, isCurrentMonth}) => {
 
     if (date.isSame(new Date, "day")) dayClass += ' _today'
 
-    console.log(dayClass);
-
     return (
         <div>
             {isCurrentMonth ?
