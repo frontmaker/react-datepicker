@@ -1,21 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
 import Calendar from './Calendar';
 
 import '../style/main.scss';
 
 export default class App extends Component {
-    render() {
+  render() {
+    const currentTime = moment(Date.now());
 
-        const currentTime = moment(Date.now());
-
-        return (
-            <div>
-                <Calendar
-                    date={currentTime}
-                    locale="de"
-                />
-            </div>
-        );
-    }
+    return (
+      <div>
+        <Calendar
+          date={currentTime}
+          locale="de"
+        />
+      </div>
+    );
+  }
 }
