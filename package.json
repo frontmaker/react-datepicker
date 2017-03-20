@@ -1,7 +1,7 @@
 {
-  "name": "react-hot-boilerplate",
+  "name": "react-datepicker",
   "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "description": "React datepicker",
   "scripts": {
     "build": "webpack",
     "start": "cross-env NODE_ENV=development node scripts/start",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-hot-boilerplate.git"
+    "url": "https://github.com/frontmaker/react-datepicker.git"
   },
-  "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
+  "author": "Evgenii Akishin <Djeka345@gmail.com> (http://github.com/frontmaker)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gaearon/react-hot-boilerplate/issues"
+    "url": "https://github.com/frontmaker/react-datepicker/issues"
   },
-  "homepage": "https://github.com/gaearon/react-hot-boilerplate",
+  "homepage": "https://github.com/frontmaker/react-datepicker",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-cli": "^6.14.0",
