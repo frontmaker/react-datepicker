@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "React datepicker",
   "scripts": {
-    "build": "webpack",
+    "build": "cross-env NODE_ENV=production ./node_modules/webpack/bin/webpack.js --progress --colors",
     "start": "cross-env NODE_ENV=development node scripts/start",
-    "flow": "node_modules/.bin/flow",
-    "test": "cross-env NODE_ENV=development jest --watch",
+    "flow": "./node_modules/.bin/flow",
+    "test": "cross-env NODE_ENV=development jest",
     "lint": "eslint src --ext .js --ext .jsx --fix"
   },
   "repository": {
@@ -52,19 +52,20 @@
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-import-resolver-babel-module": "^2.0.1",
-    "eslint-plugin-flowtype": "^2.29.1",
-    "eslint-plugin-flowtype-errors": "^1.5.0",
+    "eslint-plugin-flowtype": "^2.30.4",
+    "eslint-plugin-flowtype-errors": "^3.0.1",
     "eslint-plugin-import": "latest",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.5.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
-    "flow-bin": "^0.37.4 ",
+    "flow-bin": "^0.42.0 ",
     "html-webpack-plugin": "^2.28.0",
     "jest": "^18.0.0",
     "moment": "^2.17.1",
     "node-sass": "^3.13.1",
     "postcss-loader": "^1.3.1",
+    "react-addons-test-utils": "^15.0.0-rc.2",
     "react-hot-loader": "^3.0.0-beta.4",
     "react-test-renderer": "^15.4.2",
     "sass-loader": "^4.1.1",
@@ -77,8 +78,7 @@
     "webpack-dev-server": "^1.16.1"
   },
   "dependencies": {
-    "moment": "^2.17.1",
-    "react": "^15.3.2",
+    "react": "^15.4.2",
     "react-dom": "^15.3.2"
   }
 }

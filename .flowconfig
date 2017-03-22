@@ -1,11 +1,12 @@
 [ignore]
 */src/\(test\|spec\)/.*
-.*/node_modules/fbjs/.*
+.*/node_modules/*
 [libs]
-<PROJECT_ROOT>/node_modules/.*
+flow-typed
 [options]
-module.name_mapper.extension='scss' -> 'empty/object'
 suppress_type=$FlowIssue
+module.name_mapper.extension='scss' -> 'empty/object'
+module.name_mapper.extension='css' -> 'empty/object'
 module.file_ext=.css
 module.file_ext=.scss
 module.file_ext=.js

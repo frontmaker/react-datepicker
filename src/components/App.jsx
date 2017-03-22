@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import moment from 'moment';
+import type moment from 'moment';
 import Calendar from './Calendar';
 
 import '../style/main.scss';
@@ -12,7 +12,6 @@ export default class App extends Component {
       <div>
         <Calendar
           date={currentTime}
-          locale="de"
         />
       </div>
     );

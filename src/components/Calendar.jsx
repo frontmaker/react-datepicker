@@ -4,11 +4,10 @@ import moment from 'moment';
 
 import Weeks from './Weeks';
 
-import '../style/main.scss';
+// import '../style/main.scss';
 
 type Props = {
     date: Object,
-    locale: string,
 }
 
 type State = {
@@ -19,6 +18,12 @@ type State = {
 
 export default class Calendar extends React.Component {
   state: State;
+
+  static defaultProps = {
+    locale: 'en',
+    date: moment(Date.now()),
+    selectedDate: moment(Date.now()),
+  };
 
   prevMonth: Function;
   nextMonth: Function;
@@ -36,18 +41,6 @@ export default class Calendar extends React.Component {
     this.prevMonth = this.prevMonth.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
     this.selectDate = this.selectDate.bind(this);
-  }
-
-  componentWillMount() {
-    const { locale } = this.props;
-
-    if (locale) {
-      this.setState({
-        date: this.state.date.locale(locale),
-        selectedDate: this.state.selectedDate.locale(locale),
-        locale,
-      });
-    }
   }
 
   prevMonth() {
