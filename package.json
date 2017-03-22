@@ -6,7 +6,7 @@
     "build": "webpack",
     "start": "cross-env NODE_ENV=development node scripts/start",
     "flow": "node_modules/.bin/flow",
-    "test": "cross-env NODE_ENV=development jest --watch",
+    "test": "cross-env NODE_ENV=development jest",
     "lint": "eslint src --ext .js --ext .jsx --fix"
   },
   "repository": {
