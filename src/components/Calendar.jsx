@@ -7,13 +7,14 @@ import Weeks from './Weeks';
 // import '../style/main.scss';
 
 type Props = {
-    date: Object,
+	date: Object,
+	locale: string
 }
 
 type State = {
-    date: Object,
-    locale: string,
-    selectedDate: Object
+	date: Object,
+	locale: string,
+	selectedDate: Object
 }
 
 export default class Calendar extends React.Component {
@@ -33,7 +34,7 @@ export default class Calendar extends React.Component {
 
     this.state = {
       date: props.date,
-			selectedDate: props.date.locale(props.locale),
+      selectedDate: props.date.locale(props.locale),
       locale: props.locale,
     };
 
@@ -59,7 +60,6 @@ export default class Calendar extends React.Component {
   }
 
   render() {
-
     return (
       <div className="calendar-container">
         <div className="calendar-header">
@@ -94,13 +94,12 @@ export default class Calendar extends React.Component {
   }
 
   renderWeekDays() {
-		const currentDate = moment.locale(this.state.locale);
-
-  	const weekDays = moment.weekdaysShort();
+    moment.locale(this.state.locale);
+    const weekDays = moment.weekdaysShort();
 
     return (
       <div className="calendar-weeks">
-				{weekDays.map((day, index) => <span key={index} className="calendar-weeks__day">{day}</span>)}
+        {weekDays.map((day, index) => <span key={index} className="calendar-weeks__day">{day}</span>)}
       </div>
     );
   }
