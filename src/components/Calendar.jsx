@@ -7,13 +7,14 @@ import Weeks from './Weeks';
 // import '../style/main.scss';
 
 type Props = {
-    date: Object,
+	date: Object,
+	locale: string
 }
 
 type State = {
-    date: Object,
-    locale: string,
-    selectedDate: Object
+	date: Object,
+	locale: string,
+	selectedDate: Object
 }
 
 export default class Calendar extends React.Component {
@@ -22,7 +23,6 @@ export default class Calendar extends React.Component {
   static defaultProps = {
     locale: 'en',
     date: moment(Date.now()),
-    selectedDate: moment(Date.now()),
   };
 
   prevMonth: Function;
@@ -33,9 +33,9 @@ export default class Calendar extends React.Component {
     super(props);
 
     this.state = {
-      date: moment(Date.now()),
-      selectedDate: moment(Date.now()),
-      locale: 'en',
+      date: props.date,
+      selectedDate: props.date.locale(props.locale),
+      locale: props.locale,
     };
 
     this.prevMonth = this.prevMonth.bind(this);
@@ -77,7 +77,7 @@ export default class Calendar extends React.Component {
             <button className="calendar-body__icon _left" onClick={this.prevMonth}>
               <i className="fa fa-angle-left">&nbsp;</i>
             </button>
-            {this.state.date.format('MMMM')}
+            {this.state.selectedDate.format('MMMM')}
             <button className="calendar-body__icon _right" onClick={this.nextMonth}>
               <i className="fa fa-angle-right">&nbsp;</i>
             </button>
@@ -94,15 +94,12 @@ export default class Calendar extends React.Component {
   }
 
   renderWeekDays() {
+    moment.locale(this.state.locale);
+    const weekDays = moment.weekdaysShort();
+
     return (
       <div className="calendar-weeks">
-        <span className="calendar-weeks__day">Mon</span>
-        <span className="calendar-weeks__day">Tue</span>
-        <span className="calendar-weeks__day">Wed</span>
-        <span className="calendar-weeks__day">Thu</span>
-        <span className="calendar-weeks__day">Fri</span>
-        <span className="calendar-weeks__day">Sat</span>
-        <span className="calendar-weeks__day">Sun</span>
+        {weekDays.map((day, index) => <span key={index} className="calendar-weeks__day">{day}</span>)}
       </div>
     );
   }
