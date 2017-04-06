@@ -1,5 +1,5 @@
 import React from 'react';
-import Week  from './Week';
+import Week from './Week';
 
 type Props = {
     date: Object,
@@ -11,7 +11,7 @@ type Props = {
 const Weeks = (props: Props) => {
   let done = false;
   let count = 0;
-  const date = props.date.clone().startOf('month').weekday(1);
+  const date = props.date.clone().startOf('month').isoWeekday(0);
   let monthIndex = date.month();
   const weeks = [];
 

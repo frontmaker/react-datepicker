@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import Weeks from './Weeks';
 
-// import '../style/main.scss';
+import '../style/main.scss';
 
 type Props = {
 	date: Object,
@@ -32,10 +32,12 @@ export default class Calendar extends React.Component {
   constructor(props: Props) {
     super(props);
 
+    const { date,locale } = props;
+
     this.state = {
-      date: props.date,
-      selectedDate: props.date.locale(props.locale),
-      locale: props.locale,
+      date: date,
+      selectedDate: date.locale(locale),
+      locale: locale,
     };
 
     this.prevMonth = this.prevMonth.bind(this);
